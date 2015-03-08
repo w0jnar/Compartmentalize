@@ -1,7 +1,7 @@
 ﻿var supportedModules = [
     {
         name: "Slack",
-        functionPointer: "generateSlackModule",
+        functionPointer: generateSlackModule,
         id: "slackId"
     }
 ];
@@ -24,6 +24,7 @@ function checkCheckBox(idName) {
 }
 
 function generateModules() {
+    $("#rowContent").empty();
     var domElementString = "";
     for (var i = 0; i < supportedModules.length; i++) {
         if ($("#" + supportedModules[i].id).is(':checked')) {
@@ -37,6 +38,7 @@ function generateModules() {
 
 function generateModuleString(specificObjectToGenerate) {
     var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='col-md-4'>";
+    // var functionReturn = specificObjectToGenerate.functionPointer();
     returnString += "<div class='well well-sm'>";
 
     returnString += "<div class='panel panel-primary'>";
@@ -46,7 +48,7 @@ function generateModuleString(specificObjectToGenerate) {
     returnString += "</h3>";
     returnString += "</div>";
     returnString += "<div class='panel-body'>";
-    returnString += "meow";
+    returnString += specificObjectToGenerate.functionPointer();
     returnString += "</div>";
     returnString += "</div>";
 
