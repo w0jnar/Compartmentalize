@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Compartmentalize</title>
-
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
     <link href="libraries/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="libraries/jquery/jquery-1.11.2.min.js"></script>
     <script src="libraries/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
@@ -13,16 +13,18 @@
             <div class="container-fluid">
                 <span class="navbar-brand">Compartmentalize</span>
 
-                <div class="btn-group pull-right" role="group" style="margin-top:10px; margin-right:15px;">
+                <div class="btn-group pull-right" role="group" style="margin-top:8px; margin-right:15px;">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         Toggle Modules<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="javascript:void(0);" onclick="javascript:console.log('All');">All Messages <input type='checkbox' id='meow' onclick='javascript: console.log("meow");' style="float:right;"/></a></li>
-                        <li><a href="javascript:void(0);" onclick="javascript:console.log('All');">Information</a></li>
-                        <li><a href="javascript:void(0);" onclick="javascript:console.log('All');">Error</a></li>
+                        <li><a href="javascript:void(0);" onclick="javascript:console.log('meow');">Slack<input type="checkbox" id="meow" onclick="javascript: console.log('meow');" style="float:right;"/></a></li>
+                        <li><a href="javascript:void(0);" onclick="javascript:console.log('meow');">TODOs</a></li>
+                        <li><a href="javascript:void(0);" onclick="javascript:console.log('meow');">Youtube Playlist</a></li>
                     </ul>
                 </div>
+
+                <button type="button" class="btn btn-primary pull-right" onclick="javascript:console.log('meow');" style="margin-top:8px; margin-right:15px;">Generate Modules</button>
 
             </div>
         </div>
