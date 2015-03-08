@@ -61,8 +61,10 @@ function connectToMessageServer(urlForRTM) {
 
 // The specific resize function for Slack Modules.
 function slackResize() {
-    $("#slackTA").width(($("#slackIdModule .panel").innerWidth() - 30));
-    $("#slackTA").scrollTop($("#slackTA")[0].scrollHeight);
+    if ($("#slackTA").is(":visible")) {
+        $("#slackTA").width(($("#slackIdModule .panel").innerWidth() - 30));
+        $("#slackTA").scrollTop($("#slackTA")[0].scrollHeight);
+    }
 }
 
 // Slack requires a reset function to close the WebSocket.

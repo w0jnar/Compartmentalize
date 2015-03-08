@@ -4,7 +4,12 @@ var supportedModules = [
         name: "Slack",
         functionPointer: generateSlackModule,
         id: "slackId"
-    }
+    },
+    {
+        name: "Youtube Playlist",
+        functionPointer: generateYoutubeModule,
+        id: "youtubeId"
+    },
 ];
 
 // Resize functions need to be added here.
