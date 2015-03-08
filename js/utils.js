@@ -1,10 +1,23 @@
-﻿var supportedModules = [
+﻿// New modules need to be added here.
+var supportedModules = [
     {
         name: "Slack",
         functionPointer: generateSlackModule,
         id: "slackId"
     }
 ];
+
+// Resize functions need to be added here.
+function resize() {
+    slackResize();
+}
+
+window.onresize = resize;
+
+// Reset functions, if needed, need to be added here.
+function reset() {
+    slackReset();
+}
 
 function generateList() {
     var listElementString = "";
@@ -24,6 +37,7 @@ function checkCheckBox(idName) {
 }
 
 function generateModules() {
+    reset();
     $("#rowContent").empty();
     var domElementString = "";
     for (var i = 0; i < supportedModules.length; i++) {
