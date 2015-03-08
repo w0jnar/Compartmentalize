@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Compartmentalize</title>
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <!-- Libraries -->
-    <link href="libraries/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="libraries/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="libraries/jquery/jquery-1.11.2.min.js"></script>
     <script src="libraries/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <!-- Scripts -->
     <script src="js/utils.js"></script>
+    <link href="Compartmentalize.css" rel="stylesheet" />
 </head>
 <body onload="generateList();">
     <div id="navigation" class="navbar navbar-default navbar-fixed-top">
@@ -16,7 +17,7 @@
             <div class="container-fluid">
                 <span class="navbar-brand">Compartmentalize</span>
 
-                <div class="btn-group pull-right" role="group" style="margin-top:8px; margin-right:15px;">
+                <div id="dropdownButton" class="btn-group pull-right" role="group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         Toggle Modules<span class="caret"></span>
                     </button>
@@ -24,9 +25,13 @@
                     </ul>
                 </div>
 
-                <button type="button" class="btn btn-primary pull-right" onclick="javascript:generateModules();" style="margin-top:8px; margin-right:15px;">Generate Modules</button>
+                <button id="genButton" type="button" class="btn btn-primary pull-right" onclick="javascript:generateModules();">Generate Modules</button>
 
             </div>
+        </div>
+    </div>
+    <div id="content" class="container">
+        <div id="rowContent" class="row">
         </div>
     </div>
 </body>
