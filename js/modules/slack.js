@@ -1,4 +1,5 @@
-﻿function generateSlackModule() {
+﻿// The basic Slack Module.
+function generateSlackModule() {
     var returnString = "";
     returnString += "<div>";
     returnString += "<div id='slackKeyInput'>";
@@ -12,6 +13,7 @@
     return returnString;
 };
 
+// The actual connection attempt.
 function startConnection() {
     var slackBaseUrl = $("#slackURL").val() + "/api/";
     var url = slackBaseUrl + "rtm.start?token=" + $("#slackKey").val();
@@ -31,8 +33,9 @@ function startConnection() {
     });
 };
 
+// The rules for the connection.
 function connectToMessageServer(urlForRTM) {
-    // Intentional Global so the WebSocket can be closed if needed.
+    // Intentional Global so the WebSocket can be closed if needed in the slackReset() function.
     ws = new WebSocket(urlForRTM);
     ws.onmessage = function (msg) {
         var messageText = JSON.parse(msg.data);
@@ -56,14 +59,16 @@ function connectToMessageServer(urlForRTM) {
     }
 };
 
+// The specific resize function for Slack Modules.
 function slackResize() {
     $("#slackTA").width(($("#slackIdModule .panel").innerWidth() - 30));
     $("#slackTA").scrollTop($("#slackTA")[0].scrollHeight);
 }
 
+// Slack requires a reset function to close the WebSocket.
 function slackReset() {
     if (typeof ws !== "undefined") {
-        ws.onclose = function () { }; // disable onclose handler first
+        ws.onclose = function () { }; // Disable onclose function, as we are forcefully closing the connection.
         ws.close();
         ws = null;
     }

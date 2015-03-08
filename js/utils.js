@@ -23,7 +23,6 @@ function generateList() {
     var listElementString = "";
     for (var i = 0; i < supportedModules.length; i++) {
         listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "');\">" + supportedModules[i].name + "<input type=\"checkbox\" id=\"" + supportedModules[i].id + "\" style=\"float:right;\"/></a></li>";
-        // listElement = "<li><a href=\"javascript:void(0);\" onclick=\"javascript:console.log('meow');\">" + supportedModules[i].name + "<input type=\"checkbox\" id=\"" + supportedModules[i].id + "\" onclick=\"javascript: console.log('meow');\" style=\"float:right;\"/></a></li>";
     }
     if (listElementString.length > 0) {
         $("#selectionDropdown").append(listElementString);
@@ -31,11 +30,13 @@ function generateList() {
 };
 
 function checkCheckBox(idName) {
+    // If clicked on the actual input box, do not double click it.
     if (event.target.nodeName !== "INPUT") {
         $("#" + idName).prop('checked', !$("#" + idName).is(':checked'));
     }
 }
 
+// Generates the Modules strings, for each selected item.
 function generateModules() {
     reset();
     $("#rowContent").empty();
@@ -50,6 +51,8 @@ function generateModules() {
     }
 };
 
+// Generates the individual Module Strings, with the basic template, 
+// then calling the specific function to generate the chosen module.
 function generateModuleString(specificObjectToGenerate) {
     var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='col-md-4'>";
     // var functionReturn = specificObjectToGenerate.functionPointer();
