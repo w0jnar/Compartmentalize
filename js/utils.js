@@ -37,6 +37,20 @@ function generateModules() {
 
 function generateModuleString(specificObjectToGenerate) {
     var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='col-md-4'>";
+    returnString += "<div class='well well-sm'>";
+
+    returnString += "<div class='panel panel-primary'>";
+    returnString += "<div class='panel-heading'>";
+    returnString += "<h3 class='panel-title'>";
+    returnString += specificObjectToGenerate.name;
+    returnString += "</h3>";
+    returnString += "</div>";
+    returnString += "<div class='panel-body'>";
+    returnString += "meow";
+    returnString += "</div>";
+    returnString += "</div>";
+
+    returnString += "</div>";
     returnString += "</div>";
     return returnString;
 }
