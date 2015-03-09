@@ -66,10 +66,20 @@ function generateModules() {
     }
     if (domElementString.length > 0) {
         $("#rowContent").append(domElementString);
+        // http://stackoverflow.com/questions/17413694/is-it-possible-to-use-bootstraps-fluid-grid-layout-system-in-conjunction-with-j
         $(".row-fluid").sortable({
+            helper: 'clone',
+            start: function (event, ui) {
+                $('.row-fluid > div.span4:visible:first').addClass('real-first-child');
+            },
             stop: function (event, ui) {
+                $('.row-fluid > div.real-first-child').removeClass('real-first-child');
                 resize();
-            }
+            },
+            change: function (event, ui) {
+                $('.row-fluid > div.real-first-child').removeClass('real-first-child');
+                $('.row-fluid > div.span4:visible:first').addClass('real-first-child');
+            },
         });
     }
 };

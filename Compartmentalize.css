@@ -16,3 +16,16 @@
      margin-right: 15px;
      margin-bottom: 5px;
 }
+
+.ui-sortable-placeholder {
+    margin-left: 0 !important;
+}
+
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.real-first-child {
+	margin-left:0 !important;
+}
