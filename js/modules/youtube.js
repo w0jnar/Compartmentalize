@@ -1,6 +1,5 @@
 ﻿var videoArray = [];
 var currentVideo = 0;
-var timeOut;
 
 // The basic Youtube Module.
 function generateYoutubeModule() {
@@ -13,7 +12,7 @@ function generateYoutubeModule() {
     returnString += "<button id='youtubeAddButton' type='button' class='btn btn-primary' onclick='javascript:addVideo();'>Add Video</button>";
     returnString += "&nbsp;<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:removeVideo();'>Remove Video</button>";
     returnString += "&nbsp;<button id='youtubeStartButton' type='button' class='btn btn-primary' onclick='javascript:startVideos();'>Start Playlist</button>";
-    returnString += "<br /><br /><div id='youtubeStatus' style='height:30px;'>";
+    returnString += "<div id='youtubeStatus' style='height:30px;'>";
     returnString += "</div>";
     returnString += "</div>";
     returnString += "</div>";
@@ -21,9 +20,14 @@ function generateYoutubeModule() {
 };
 
 function addVideo() {
-    videoArray.push($("#youtubeInputId").val());
-    $("#youtubeStatus").text($("#youtubeInputId").val() + " added!");
-    $("#youtubeInputId").val("");
+    var vidToAdd = $("#youtubeInputId").val();
+    if (vidToAdd !== "") {
+        videoArray.push(vidToAdd);
+        $("#youtubeStatus").text(vidToAdd + " added!");
+        $("#youtubeInputId").val("");
+    } else {
+        $("#youtubeStatus").text("There is nothing there to add.");
+    }
 }
 
 function removeVideo() {
@@ -34,4 +38,51 @@ function removeVideo() {
     } else {
         $("#youtubeStatus").text($("#youtubeInputId").val() + " was not in the queue.");
     }
+}
+
+var player;
+function startVideos() {
+    if (videoArray.length !== 0) {
+        player = new YT.Player('youtubePlayer', {
+            height: '168',
+            width: ($("#youtubeIdModule .panel").innerWidth() - 30),
+            videoId: videoArray[0],
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+        youtubeResize();
+    } else {
+        $("#youtubeStatus").text("There are no videos in the queue.");
+    }
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === 0) {
+        currentVideo++;
+        if (currentVideo >= videoArray.length) {
+            currentVideo = 0;
+        }
+        player.cueVideoById(videoArray[currentVideo], 0);
+        event.target.playVideo();
+    }
+}
+
+function stopVideo() {
+    player.stopVideo();
+}
+
+function youtubeResize() {
+    $("#youtubePlayer").width(($("#youtubeIdModule .panel").innerWidth() - 30));
+}
+
+function youtubeReset() {
+    videoArray = [];
+    currentVideo = 0;
+    player = null;
 }
