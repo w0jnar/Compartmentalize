@@ -14,6 +14,7 @@ var supportedModules = [
 
 // Resize functions need to be added here.
 function resize() {
+    pageResize();
     slackResize();
     youtubeResize();
 }
@@ -27,6 +28,7 @@ function reset() {
 }
 
 function generateList() {
+    pageResize();
     var listElementString = "";
     for (var i = 0; i < supportedModules.length; i++) {
         listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "');\">" + supportedModules[i].name + "<input type=\"checkbox\" id=\"" + supportedModules[i].id + "\" style=\"float:right;\"/></a></li>";
@@ -79,4 +81,8 @@ function generateModuleString(specificObjectToGenerate) {
     returnString += "</div>";
     returnString += "</div>";
     return returnString;
+}
+
+function pageResize() {
+    $("body").css("padding-top", ($(".container-fluid").height() + 20));
 }
