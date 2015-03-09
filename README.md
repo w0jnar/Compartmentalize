@@ -10,4 +10,4 @@ Known issues:
         
         -In a similar vein, moving iframes, causes issues, so directly dragging the 
         Youtube iframe after it has been initialized will cause issues. Moving other 
-        modules, and it moving because of them is fine.
+        modules, and it moving because of them, is fine.
