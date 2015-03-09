@@ -14,7 +14,10 @@ var supportedModules = [
 
 // Resize functions need to be added here.
 function resize() {
+    // The actual page.
     pageResize();
+
+    // The Module Functions.
     slackResize();
     youtubeResize();
 }
@@ -57,6 +60,7 @@ function generateModules() {
     }
     if (domElementString.length > 0) {
         $("#rowContent").append(domElementString);
+        $(".row-fluid").sortable();
     }
 };
 

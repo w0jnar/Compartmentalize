@@ -1,5 +1,6 @@
 ﻿var videoArray = [];
 var currentVideo = 0;
+var player;
 
 // The basic Youtube Module.
 function generateYoutubeModule() {
@@ -40,7 +41,6 @@ function removeVideo() {
     }
 }
 
-var player;
 function startVideos() {
     if (videoArray.length !== 0) {
         player = new YT.Player('youtubePlayer', {
@@ -68,8 +68,10 @@ function onPlayerStateChange(event) {
         if (currentVideo >= videoArray.length) {
             currentVideo = 0;
         }
-        player.cueVideoById(videoArray[currentVideo], 0);
-        event.target.playVideo();
+        if (videoArray.length !== 0) {
+            player.cueVideoById(videoArray[currentVideo], 0);
+            event.target.playVideo();
+        }
     }
 }
 
