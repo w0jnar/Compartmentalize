@@ -6,7 +6,7 @@ function generateRedditModule() {
     returnString += "<div>";
     returnString += "<div id='redditLogging'>";
     returnString += "</div>";
-    returnString += "<div>";
+    returnString += "<div id='redditInfo' style='height:126px'>";
     returnString += "Subreddit: <input type='text' name='url' id='subreddit'><br /><br />";
 
     returnString += "<div id='redditDropdown' class='btn-group pull-right' role='group'>";
@@ -53,8 +53,9 @@ function getReddit() {
 function buildChart(jsonArray) {
     // console.log(jsonArray);
     //$("#redditLogging").width(
+    $("#redditInfo").height(0);
     $("#redditLogging").empty();
-    $("#redditLogging").height(222);
+    $("#redditLogging").height(219);
     $("#redditLogging").css("overflow-y", "scroll");
     var htmlString = "<table class='table table-striped'>";
     for (var i = 0; i < jsonArray.length; i++) {
