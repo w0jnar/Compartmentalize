@@ -17,7 +17,7 @@ var supportedModules = [
     },
 ];
 
-// Resize functions need to be added here.
+// Resize functions, if needed, need to be added here.
 function resize() {
     // The actual page.
     pageResize();
@@ -31,6 +31,7 @@ window.onresize = resize;
 
 // Reset functions, if needed, need to be added here.
 function reset() {
+    resetReddit()
     slackReset();
     youtubeReset();
 }

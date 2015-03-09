@@ -11,7 +11,7 @@ function generateRedditModule() {
 
     returnString += "<div id='redditDropdown' class='btn-group pull-right' role='group'>";
     returnString += "<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>";
-    returnString += "Sort<span class='caret'></span>";
+    returnString += "Sort: Hot<span class='caret'></span>";
     returnString += "</button>";
     returnString += "<ul id='selectionDropdown' class='dropdown-menu' role='menu'>"
     returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('hot');\">Hot</a></li>";
@@ -32,6 +32,7 @@ function generateRedditModule() {
 
 function changeRedditSort(newSort) {
     redditSort = newSort;
+    $("#redditDropdown button").empty().append("Sort: " + newSort.charAt(0).toUpperCase() + newSort.slice(1) + "<span class='caret'></span>");
 }
 
 function getReddit() {
@@ -64,4 +65,8 @@ function buildChart(jsonArray) {
     }
     htmlString += "</table>";
     $("#redditLogging").append(htmlString);
+}
+
+function resetReddit() {
+    redditSort = "hot";
 }
