@@ -22,12 +22,14 @@ function generateYoutubeModule() {
 
 function addVideo() {
     var vidToAdd = $("#youtubeInputId").val();
-    if (vidToAdd !== "") {
+    if (/^[a-z0-9_-]{11}$/i.test(vidToAdd)) {
         videoArray.push(vidToAdd);
         $("#youtubeStatus").text(vidToAdd + " added!");
         $("#youtubeInputId").val("");
-    } else {
+    } else if (vidToAdd === "") {
         $("#youtubeStatus").text("There is nothing there to add.");
+    } else {
+        $("#youtubeStatus").text("The Id you have entered is invalid.");
     }
 }
 
@@ -49,7 +51,8 @@ function startVideos() {
             videoId: videoArray[0],
             events: {
                 'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
+                'onStateChange': onPlayerStateChange,
+                'onError' : onPlayerError
             }
         });
         youtubeResize();
@@ -63,6 +66,22 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
+    nextVideo(event);
+}
+
+function onPlayerError(event) {
+    //$("#youtubeStatus").text("There was an error with id: " + videoArray[currentVideo] + ". It will be removed.");
+    //console.log(videoArray);
+    //videoArray.splice(currentVideo, 1);
+    //if (currentVideo !== 0) {
+    //    currentVideo--;
+    //}
+    //console.log(videoArray);
+    event.data = 0;
+    nextVideo(event);
+}
+
+function nextVideo(event) {
     if (event.data === 0) {
         currentVideo++;
         if (currentVideo >= videoArray.length) {
