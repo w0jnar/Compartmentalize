@@ -1,6 +1,11 @@
 ﻿// New modules need to be added here.
 var supportedModules = [
     {
+        name: "Reddit",
+        functionPointer: generateRedditModule,
+        id: "redditId"
+    },
+    {
         name: "Slack",
         functionPointer: generateSlackModule,
         id: "slackId"
@@ -60,7 +65,11 @@ function generateModules() {
     }
     if (domElementString.length > 0) {
         $("#rowContent").append(domElementString);
-        $(".row-fluid").sortable();
+        $(".row-fluid").sortable({
+            stop: function (event, ui) {
+                resize();
+            }
+        });
     }
 };
 

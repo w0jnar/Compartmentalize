@@ -1,4 +1,6 @@
-﻿// The basic Slack Module.
+﻿var ws;
+
+// The basic Slack Module.
 function generateSlackModule() {
     var returnString = "";
     returnString += "<div>";
