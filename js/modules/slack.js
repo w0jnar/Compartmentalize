@@ -4,9 +4,15 @@
 function generateSlackModule() {
     var returnString = "";
     returnString += "<div>";
-    returnString += "<div id='slackKeyInput'>";
-    returnString += "Slack URL: <input type='text' name='url' id='slackURL'><br /><br />";
-    returnString += "Bot Key: &nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='key' id='slackKey'><br /><br />";
+    returnString += "<div id='slackKeyInput' style='height: 124px;'>";
+    returnString += "<div class='input-group'>";
+    returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Slack URL:&nbsp;</span>";
+    returnString += "<input type='text' class='form-control' placeholder='URL' aria-describedby='slack-sizing-addon1' id='slackURL'>";
+    returnString += "</div>";
+    returnString += "<div class='input-group'>";
+    returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Bot Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+    returnString += "<input type='text' class='form-control' placeholder='Key' aria-describedby='slack-sizing-addon1' id='slackKey'>";
+    returnString += "</div><br />";
     returnString += "<button id='slackKeyButton' type='button' class='btn btn-primary' onclick='javascript:startConnection();'>Initialize Connection</button>";
     returnString += "</div>";
     returnString += "<div id='slackTAContainer' style='display:none; height:300px;'>";
