@@ -6,7 +6,7 @@ function generateBreakingNewsModule() {
     returnString += "<div id='breakingNewsContainer'>";
     returnString += "<div id='breakingNewsLogging'>";
     returnString += "</div>";
-    returnString += "<div id='breakingNewsInfo' style='height:126px'>";
+    returnString += "<div id='breakingNewsInfo' style='height:125px'>";
     returnString += "<div class='input-group'>";
     returnString += "<span class='input-group-addon' id='breakingNews-sizing-addon'>Time between Polls:</span>";
     returnString += "<input type='text' class='form-control' placeholder='5' aria-describedby='breakingNews-sizing-addon' id='breakingNewsInputId'>";

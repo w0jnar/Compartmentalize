@@ -8,7 +8,7 @@ function generateYoutubeModule() {
     returnString += "<div>";
     returnString += "<div id='youtubePlayer'>";
     returnString += "</div>";
-    returnString += "<div id='youtubePlayerInput' style='height:128px;'>";
+    returnString += "<div id='youtubePlayerInput' style='height:126px;'>";
     //returnString += "Video Id: <input type='text' name='vidId' id='youtubeInputId'><br /><br />";
 
     returnString += "<div class='input-group'>";
@@ -55,7 +55,7 @@ function removeVideo() {
 function startVideos() {
     if (videoArray.length !== 0) {
         player = new YT.Player('youtubePlayer', {
-            height: '260',
+            height: '262',
             width: ($("#youtubeIdModule .panel").innerWidth() - 30),
             videoId: videoArray[0],
             events: {

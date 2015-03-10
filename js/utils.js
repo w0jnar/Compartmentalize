@@ -79,7 +79,7 @@ function generateModules() {
 // Generates the individual Module Strings, with the basic template, 
 // then calling the specific function to generate the chosen module.
 function generateModuleString(specificObjectToGenerate) {
-    var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='col-md-4 contentChild'>";
+    var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='contentChild'>";
     // var functionReturn = specificObjectToGenerate.functionPointer();
     returnString += "<div class='well well-sm'>";
 

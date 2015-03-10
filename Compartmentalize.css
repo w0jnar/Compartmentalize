@@ -23,5 +23,6 @@
 }
 
 .contentChild {
-  position: absolute;
+    position: absolute;
+    width: 445px;
 }
