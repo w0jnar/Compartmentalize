@@ -3,12 +3,20 @@
 // The basic Reddit Module.
 function generateRedditModule() {
     var returnString = "";
-    returnString += "<div>";
+    returnString += "<div id='redditContainer'>";
     returnString += "<div id='redditLogging'>";
     returnString += "</div>";
     returnString += "<div id='redditInfo' style='height:126px'>";
-    returnString += "Subreddit: <input type='text' name='url' id='subreddit'><br /><br />";
 
+    //returnString += "Subreddit: <input type='text' name='url' id='subreddit'><br /><br />";
+
+    returnString += "<div class='input-group'>";
+    returnString += "<span class='input-group-addon' id='reddit-sizing-addon'>Subreddit:</span>";
+    returnString += "<input type='text' class='form-control' placeholder='Subreddit' aria-describedby='reddit-sizing-addon' id='subredditInputId'>";
+    returnString += "</div><br />";
+
+    returnString += "<div class='btn-group' role='group' aria-label='...'>";
+    returnString += "<button id='redditButton' type='button' class='btn btn-primary' onclick='javascript:getReddit();'>Get Reddit Posts</button>";
     returnString += "<div id='redditDropdown' class='btn-group pull-right' role='group'>";
     returnString += "<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>";
     returnString += "Sort: Hot<span class='caret'></span>";
@@ -19,12 +27,10 @@ function generateRedditModule() {
     returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('rising');\">Rising</a></li>";
     returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('controversial');\">Controversial</a></li>";
     returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('top');\">Top</a></li>";
-    //returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('gilded');\">Gilded</a></li>";
-    //returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('wiki');\">Wiki</a></li>";
-    //returnString += "<li><a href='javascript:void(0);' onclick=\"javascript:changeRedditSort('promoted');\">Promoted</a></li>";
     returnString += "</ul>";
     returnString += "</div>";
-    returnString += "<button id='redditButton' type='button' class='btn btn-primary' onclick='javascript:getReddit();'>Get Reddit Posts</button>";
+    returnString += "</div>";
+
     returnString += "</div>";
     returnString += "</div>";
     return returnString;
@@ -36,18 +42,23 @@ function changeRedditSort(newSort) {
 }
 
 function getReddit() {
-    var redditUrl = 'https://www.reddit.com/r/' + $("#subreddit").val() + '/' + redditSort + '/.json';
-    $.getJSON(
-    redditUrl,
-    function (data, status) {
-        if (status === "success") {
-            var dataToChart = data.data.children;
-            buildChart(dataToChart);
+    if ($("#subredditInputId").val() !== "") {
+        var redditUrl = 'https://www.reddit.com/r/' + $("#subredditInputId").val() + '/' + redditSort + '/.json';
+        $.getJSON(
+        redditUrl,
+        function (data, status) {
+            if (status === "success") {
+                var dataToChart = data.data.children;
+                buildChart(dataToChart);
+                $("#redditContainer").height(298);
+            }
         }
+        ).fail(function () {
+            $("#redditLogging").text("-ERROR: Connection not made.\n");
+        });
+    } else {
+        $("#redditLogging").text("-ERROR: Please enter a valid subreddit.\n");
     }
-    ).fail(function () {
-        $("#redditLogging").text("-ERROR: Connection not made.");
-    });
 }
 
 function buildChart(jsonArray) {

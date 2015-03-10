@@ -9,10 +9,19 @@ function generateYoutubeModule() {
     returnString += "<div id='youtubePlayer'>";
     returnString += "</div>";
     returnString += "<div id='youtubePlayerInput' style='height:128px;'>";
-    returnString += "Video Id: <input type='text' name='vidId' id='youtubeInputId'><br /><br />";
+    //returnString += "Video Id: <input type='text' name='vidId' id='youtubeInputId'><br /><br />";
+
+    returnString += "<div class='input-group'>";
+    returnString += "<span class='input-group-addon' id='youtube-sizing-addon'>Video Id:</span>";
+    returnString += "<input type='text' class='form-control' placeholder='Id' aria-describedby='youtube-sizing-addon' id='youtubeInputId'>";
+    returnString += "</div><br />";
+
+    returnString += "<div class='btn-group' role='group' aria-label='...'>";
     returnString += "<button id='youtubeAddButton' type='button' class='btn btn-primary' onclick='javascript:addVideo();'>Add Video</button>";
-    returnString += "&nbsp;<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:removeVideo();'>Remove Video</button>";
-    returnString += "&nbsp;<button id='youtubeStartButton' type='button' class='btn btn-primary' onclick='javascript:startVideos();'>Start Playlist</button>";
+    returnString += "<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:removeVideo();'>Remove Video</button>";
+    returnString += "<button id='youtubeStartButton' type='button' class='btn btn-primary' onclick='javascript:startVideos();'>Start Playlist</button>";
+    returnString += "</div>";
+
     returnString += "<div id='youtubeStatus' style='height:30px;'>";
     returnString += "</div>";
     returnString += "</div>";
@@ -52,7 +61,7 @@ function startVideos() {
             events: {
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange,
-                'onError' : onPlayerError
+                'onError': onPlayerError
             }
         });
         youtubeResize();

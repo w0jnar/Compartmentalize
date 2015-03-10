@@ -1,6 +1,11 @@
 ﻿// New modules need to be added here.
 var supportedModules = [
     {
+        name: "Breaking News",
+        functionPointer: generateBreakingNewsModule,
+        id: "breakingNewsId"
+    },
+    {
         name: "Reddit",
         functionPointer: generateRedditModule,
         id: "redditId"
