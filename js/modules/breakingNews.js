@@ -57,6 +57,7 @@ function getArticles() {
 }
 
 function buildbreakingNewsList(jsonArray) {
+    $("#breakingNewsContainer").height(395);
     $("#breakingNewsInfo").height(78);
     $("#breakingNewsLogging").empty();
     $("#breakingNewsLogging").height(219);
@@ -69,6 +70,7 @@ function buildbreakingNewsList(jsonArray) {
     }
     htmlString += "</table>";
     $("#breakingNewsLogging").append(htmlString);
+    resetShapeShift();
 }
 
 function breakingNewsReset() {

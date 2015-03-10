@@ -15,7 +15,7 @@ function generateSlackModule() {
     returnString += "</div><br />";
     returnString += "<button id='slackKeyButton' type='button' class='btn btn-primary' onclick='javascript:startConnection();'>Initialize Connection</button>";
     returnString += "</div>";
-    returnString += "<div id='slackTAContainer' style='display:none; height:300px;'>";
+    returnString += "<div id='slackTAContainer' style='display:none; height:390px;'>";
     returnString += "</div>";
     returnString += "</div>";
     return returnString;
@@ -23,22 +23,29 @@ function generateSlackModule() {
 
 // The actual connection attempt.
 function startConnection() {
-    var slackBaseUrl = $("#slackURL").val() + "/api/";
-    var url = slackBaseUrl + "rtm.start?token=" + $("#slackKey").val();
-    $.getJSON(
-    url,
-    function (data, status) {
-        if (status === "success") {
-            $("#slackKeyInput").hide();
-            $("#slackTAContainer").show();
-            $("#slackTAContainer").append("<textarea id='slackTA' readonly style='width:" + ($("#slackIdModule .panel").innerWidth() - 30) + "px; resize: none; height: 300px; border: none;'></textarea>");
-            var urlForRTM = data.url;
-            connectToMessageServer(urlForRTM);
+    if ($("#slackURL").val() !== "" && $("#slackKey").val() !== "") {
+        var slackBaseUrl = $("#slackURL").val() + "/api/";
+        var url = slackBaseUrl + "rtm.start?token=" + $("#slackKey").val();
+        $.getJSON(
+        url,
+        function (data, status) {
+            if (status === "success") {
+                $("#slackKeyInput").hide();
+                $("#slackTAContainer").show();
+                $("#slackTAContainer").append("<textarea id='slackTA' readonly style='width:" + ($("#slackIdModule .panel").innerWidth() - 30) + "px; resize: none; height: 390px; border: none;'></textarea>");
+                resetShapeShift();
+                var urlForRTM = data.url;
+                connectToMessageServer(urlForRTM);
+            }
         }
+        ).fail(function () {
+            $("#slackKeyInput").prepend("-ERROR: Connection not made.<br />");
+            $("#slackKeyInput").height($("#slackKeyInput").height() + 20);
+        });
+    } else {
+        $("#slackKeyInput").prepend("Invalid URL or Key. Request not made.<br />");
+        $("#slackKeyInput").height($("#slackKeyInput").height() + 20);
     }
-    ).fail(function () {
-        $("#keyInput").append("<br /><br />-ERROR: Connection not made.<br />");
-    });
 };
 
 // The rules for the connection.

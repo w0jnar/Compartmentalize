@@ -55,7 +55,7 @@ function removeVideo() {
 function startVideos() {
     if (videoArray.length !== 0) {
         player = new YT.Player('youtubePlayer', {
-            height: '168',
+            height: '260',
             width: ($("#youtubeIdModule .panel").innerWidth() - 30),
             videoId: videoArray[0],
             events: {
@@ -65,6 +65,7 @@ function startVideos() {
             }
         });
         youtubeResize();
+        resetShapeShift();
     } else {
         $("#youtubeStatus").text("There are no videos in the queue.");
     }

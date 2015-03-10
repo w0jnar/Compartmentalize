@@ -45,7 +45,8 @@ function getReddit() {
             if (status === "success") {
                 var dataToChart = data.data.children;
                 buildChart(dataToChart);
-                $("#redditContainer").height(298);
+                $("#redditContainer").height(396);
+                resetShapeShift();
             }
         }
         ).fail(function () {
@@ -54,6 +55,7 @@ function getReddit() {
     } else {
         $("#redditLogging").text("-ERROR: Please enter a valid subreddit.\n");
     }
+    resetShapeShift();
 }
 
 function buildChart(jsonArray) {

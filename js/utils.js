@@ -72,28 +72,14 @@ function generateModules() {
     }
     if (domElementString.length > 0) {
         $("#rowContent").append(domElementString);
-        // http://stackoverflow.com/questions/17413694/is-it-possible-to-use-bootstraps-fluid-grid-layout-system-in-conjunction-with-j
-        $(".row-fluid").sortable({
-            helper: 'clone',
-            start: function (event, ui) {
-                $('.row-fluid > div.span4:visible:first').addClass('real-first-child');
-            },
-            stop: function (event, ui) {
-                $('.row-fluid > div.real-first-child').removeClass('real-first-child');
-                resize();
-            },
-            change: function (event, ui) {
-                $('.row-fluid > div.real-first-child').removeClass('real-first-child');
-                $('.row-fluid > div.span4:visible:first').addClass('real-first-child');
-            },
-        });
+        resetShapeShift();
     }
 };
 
 // Generates the individual Module Strings, with the basic template, 
 // then calling the specific function to generate the chosen module.
 function generateModuleString(specificObjectToGenerate) {
-    var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='col-md-4'>";
+    var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='col-md-4 contentChild'>";
     // var functionReturn = specificObjectToGenerate.functionPointer();
     returnString += "<div class='well well-sm'>";
 
@@ -111,6 +97,13 @@ function generateModuleString(specificObjectToGenerate) {
     returnString += "</div>";
     returnString += "</div>";
     return returnString;
+}
+
+function resetShapeShift() {
+    $(".row-fluid").shapeshift({
+        paddingY: 0,
+        gutterY: 0
+    });
 }
 
 function pageResize() {
