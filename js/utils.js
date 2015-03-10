@@ -100,10 +100,7 @@ function generateModuleString(specificObjectToGenerate) {
 }
 
 function resetShapeShift() {
-    $(".row-fluid").shapeshift({
-        paddingY: 0,
-        gutterY: 0
-    });
+    $(".row-fluid").shapeshift();
 }
 
 function pageResize() {
