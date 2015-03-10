@@ -45,7 +45,7 @@ function getReddit() {
             if (status === "success") {
                 var dataToChart = data.data.children;
                 buildChart(dataToChart);
-                $("#redditContainer").height(396);
+                $("#redditContainer").height(382);
                 resetShapeShift();
             }
         }

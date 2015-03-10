@@ -55,7 +55,7 @@ function removeVideo() {
 function startVideos() {
     if (videoArray.length !== 0) {
         player = new YT.Player('youtubePlayer', {
-            height: '262',
+            height: '251',
             width: ($("#youtubeIdModule .panel").innerWidth() - 30),
             videoId: videoArray[0],
             events: {

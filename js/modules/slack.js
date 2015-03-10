@@ -4,7 +4,7 @@
 function generateSlackModule() {
     var returnString = "";
     returnString += "<div>";
-    returnString += "<div id='slackKeyInput' style='height: 124px;'>";
+    returnString += "<div id='slackKeyInput' style='height: 126px;'>";
     returnString += "<div class='input-group'>";
     returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Slack URL:&nbsp;</span>";
     returnString += "<input type='text' class='form-control' placeholder='URL' aria-describedby='slack-sizing-addon1' id='slackURL'>";
@@ -15,7 +15,7 @@ function generateSlackModule() {
     returnString += "</div><br />";
     returnString += "<button id='slackKeyButton' type='button' class='btn btn-primary' onclick='javascript:startConnection();'>Initialize Connection</button>";
     returnString += "</div>";
-    returnString += "<div id='slackTAContainer' style='display:none; height:390px;'>";
+    returnString += "<div id='slackTAContainer' style='display:none; height:382px;'>";
     returnString += "</div>";
     returnString += "</div>";
     return returnString;
