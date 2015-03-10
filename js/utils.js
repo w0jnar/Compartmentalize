@@ -100,9 +100,12 @@ function generateModuleString(specificObjectToGenerate) {
 }
 
 function resetShapeShift() {
-    $(".row-fluid").shapeshift({
-        gutterY: 0,
-    });
+    // shapeShift breaks itself if there is only one element.
+    if ($("#rowContent").children().length > 1) {
+        $(".row-fluid").shapeshift({
+            gutterY: 0,
+        });
+    }
 }
 
 function pageResize() {

@@ -18,10 +18,11 @@ function generateBreakingNewsModule() {
     return returnString;
 }
 
+// On button press, attempt to get News, and start an interval.
 function getBreakingNews() {
     var input = $("#breakingNewsInputId").val();
     var numToSend;
-    if (/\d+/.test(input)) {
+    if (/^\d+$/.test(input)) {
         numToSend = input;
     } else if (input === "") {
         numToSend = "5";

@@ -31,11 +31,13 @@ function generateRedditModule() {
     return returnString;
 }
 
+// Update the sort for the results of the Reddit request.
 function changeRedditSort(newSort) {
     redditSort = newSort;
     $("#redditDropdown button").empty().append("Sort: " + newSort.charAt(0).toUpperCase() + newSort.slice(1) + "<span class='caret'></span>");
 }
 
+// Get the actual Reddit requests.
 function getReddit() {
     if ($("#subredditInputId").val() !== "") {
         var redditUrl = 'https://www.reddit.com/r/' + $("#subredditInputId").val() + '/' + redditSort + '/.json';
@@ -58,9 +60,8 @@ function getReddit() {
     resetShapeShift();
 }
 
+// Build the Reddit output.
 function buildChart(jsonArray) {
-    // console.log(jsonArray);
-    //$("#redditLogging").width(
     $("#redditInfo").height(0);
     $("#redditLogging").empty();
     $("#redditLogging").height(219);
