@@ -7,14 +7,10 @@ function generateRedditModule() {
     returnString += "<div id='redditLogging'>";
     returnString += "</div>";
     returnString += "<div id='redditInfo' style='height:126px'>";
-
-    //returnString += "Subreddit: <input type='text' name='url' id='subreddit'><br /><br />";
-
     returnString += "<div class='input-group'>";
     returnString += "<span class='input-group-addon' id='reddit-sizing-addon'>Subreddit:</span>";
     returnString += "<input type='text' class='form-control' placeholder='Subreddit' aria-describedby='reddit-sizing-addon' id='subredditInputId'>";
     returnString += "</div><br />";
-
     returnString += "<div class='btn-group' role='group' aria-label='...'>";
     returnString += "<button id='redditButton' type='button' class='btn btn-primary' onclick='javascript:getReddit();'>Get Reddit Posts</button>";
     returnString += "<div id='redditDropdown' class='btn-group pull-right' role='group'>";
@@ -30,7 +26,6 @@ function generateRedditModule() {
     returnString += "</ul>";
     returnString += "</div>";
     returnString += "</div>";
-
     returnString += "</div>";
     returnString += "</div>";
     return returnString;

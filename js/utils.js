@@ -36,7 +36,8 @@ window.onresize = resize;
 
 // Reset functions, if needed, need to be added here.
 function reset() {
-    resetReddit()
+    breakingNewsReset();
+    resetReddit();
     slackReset();
     youtubeReset();
 }
