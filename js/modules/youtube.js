@@ -14,8 +14,8 @@ function generateYoutubeModule() {
     returnString += "<input type='text' class='form-control' placeholder='Id' aria-describedby='youtube-sizing-addon' id='youtubeInputId'>";
     returnString += "</div><br />";
     returnString += "<div class='btn-group' role='group' aria-label='...'>";
-    returnString += "<button id='youtubeAddButton' type='button' class='btn btn-primary' onclick='javascript:addVideo();'>Add Video</button>";
-    returnString += "<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:removeVideo();'>Remove Video</button>";
+    returnString += "<button id='youtubeAddButton' type='button' class='btn btn-primary' onclick='javascript:videoHelper(true);'>Add Video</button>";
+    returnString += "<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:videoHelper(false);'>Remove Video</button>";
     returnString += "<button id='youtubeStartButton' type='button' class='btn btn-primary' onclick='javascript:startVideos();'>Start Playlist</button>";
     returnString += "</div>";
     returnString += "<div id='youtubeStatus' style='height:30px;'>";
@@ -25,18 +25,26 @@ function generateYoutubeModule() {
     return returnString;
 };
 
-function addVideo() {
-    var vidToAdd = $("#youtubeInputId").val();
+function videoHelper(isAdding) {
+    var vidToModify = $("#youtubeInputId").val();
     // Assume it needs to be formatted.
-    if (vidToAdd.length > 11) {
-        var vParamIndex = vidToAdd.indexOf("?v=");
+    if (vidToModify.length > 11) {
+        var vParamIndex = vidToModify.indexOf("?v=");
         if (vParamIndex > -1) {
             // Offset for "?v=".
             var vParamIndexWithOffset = vParamIndex + 3;
             // Plus 11 for the id length.
-            vidToAdd = vidToAdd.slice(vParamIndexWithOffset, vParamIndexWithOffset + 11);
+            vidToModify = vidToModify.slice(vParamIndexWithOffset, vParamIndexWithOffset + 11);
         }
     }
+    if (isAdding) {
+        addVideo(vidToModify);
+    } else {
+        removeVideo(vidToModify);
+    }
+}
+
+function addVideo(vidToAdd) {
     if (/^[a-z0-9_-]{11}$/i.test(vidToAdd)) {
         videoArray.push(vidToAdd);
         $("#youtubeStatus").text(vidToAdd + " added!");
@@ -48,13 +56,13 @@ function addVideo() {
     }
 }
 
-function removeVideo() {
-    var index = videoArray.indexOf($("#youtubeInputId").val());
+function removeVideo(vidToRemove) {
+    var index = videoArray.indexOf(vidToRemove);
     if (index > -1) {
         videoArray.splice(index, 1);
-        $("#youtubeStatus").text($("#youtubeInputId").val() + " removed!");
+        $("#youtubeStatus").text(vidToRemove + " removed!");
     } else {
-        $("#youtubeStatus").text($("#youtubeInputId").val() + " was not in the queue.");
+        $("#youtubeStatus").text(vidToRemove + " was not in the queue.");
     }
 }
 
