@@ -46,16 +46,26 @@ function generateList() {
     pageResize();
     var listElementString = "";
     for (var i = 0; i < supportedModules.length; i++) {
-        listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "');\">" + supportedModules[i].name + "<input type=\"checkbox\" id=\"" + supportedModules[i].id + "\" style=\"float:right;\"/></a></li>";
+        listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "', this);\"><input type=\"checkbox\" id=\"" + supportedModules[i].id + "\"/>&nbsp;" + supportedModules[i].name + "</a></li>";
     }
     if (listElementString.length > 0) {
         $("#selectionDropdown").append(listElementString);
     }
+    // Essentially, triple click the checkboxes to deal with the issues of it being within the <a> element for nicer formatting, caused by the FireFox formatting.
+    $("input").filter(function () {
+        return $(this).attr("type") === "checkbox";
+    }).click(function () {
+        $(this).prop('checked', !$(this).is(':checked'));
+    });
 };
 
-function checkCheckBox(idName) {
+function checkCheckBox(idName, e) {
     // If clicked on the actual input box, do not double click it.
-    if (event.target.nodeName !== "INPUT") {
+    if (!e) {
+        e = window.event;
+    }
+    var elementName = e.nodeName || e.srcElement;
+    if (elementName !== "INPUT") {
         $("#" + idName).prop('checked', !$("#" + idName).is(':checked'));
     }
 }
