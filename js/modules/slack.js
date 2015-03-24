@@ -6,7 +6,7 @@ function generateSlackModule() {
     returnString += "<div>";
     returnString += "<div id='slackKeyInput' style='height: 126px;'>";
     returnString += "<div class='input-group'>";
-    returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Slack URL:&nbsp;</span>";
+    returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Slack URL Or Group:&nbsp;</span>";
     returnString += "<input type='text' class='form-control' placeholder='URL' aria-describedby='slack-sizing-addon1' id='slackURL'>";
     returnString += "</div>";
     returnString += "<div class='input-group'>";
@@ -23,8 +23,15 @@ function generateSlackModule() {
 
 // The actual connection attempt.
 function startConnection() {
-    if ($("#slackURL").val() !== "" && $("#slackKey").val() !== "") {
-        var slackBaseUrl = $("#slackURL").val() + "/api/";
+    var slackURL = $("#slackURL").val();
+    if (slackURL !== "" && $("#slackKey").val() !== "") {
+        if (slackURL.indexOf("https://") === -1) {
+            slackURL = "https://" + slackURL;
+        }
+        if (slackURL.indexOf(".slack.com") === -1) {
+            slackURL = slackURL + ".slack.com";
+        }
+        var slackBaseUrl = slackURL + "/api/";
         var url = slackBaseUrl + "rtm.start?token=" + $("#slackKey").val();
         $.getJSON(
         url,
@@ -32,7 +39,7 @@ function startConnection() {
             if (status === "success") {
                 $("#slackKeyInput").hide();
                 $("#slackTAContainer").show();
-                $("#slackTAContainer").append("<textarea id='slackTA' readonly style='width:" + ($("#slackIdModule .panel").innerWidth() - 30) + "px; resize: none; height: 390px; border: none;'></textarea>");
+                $("#slackTAContainer").append("<textarea id='slackTA' readonly style='width:" + ($("#slackIdModule .panel").innerWidth() - 30) + "px; resize: none; height: 390px; border: none;'>Connection Made.\n</textarea>");
                 resetShapeShift();
                 var urlForRTM = data.url;
                 connectToMessageServer(urlForRTM);
