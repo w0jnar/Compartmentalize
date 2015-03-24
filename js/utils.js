@@ -46,7 +46,7 @@ function generateList() {
     pageResize();
     var listElementString = "";
     for (var i = 0; i < supportedModules.length; i++) {
-        listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "', this);\"><input type=\"checkbox\" id=\"" + supportedModules[i].id + "\"/>&nbsp;" + supportedModules[i].name + "</a></li>";
+        listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "');\"><input type=\"checkbox\" id=\"" + supportedModules[i].id + "\"/>&nbsp;" + supportedModules[i].name + "</a></li>";
     }
     if (listElementString.length > 0) {
         $("#selectionDropdown").append(listElementString);
@@ -59,15 +59,8 @@ function generateList() {
     });
 };
 
-function checkCheckBox(idName, e) {
-    // If clicked on the actual input box, do not double click it.
-    if (!e) {
-        e = window.event;
-    }
-    var elementName = e.nodeName || e.srcElement;
-    if (elementName !== "INPUT") {
-        $("#" + idName).prop('checked', !$("#" + idName).is(':checked'));
-    }
+function checkCheckBox(idName) {
+    $("#" + idName).prop('checked', !$("#" + idName).is(':checked'));
 }
 
 function toggleModules(isOnButton) {
