@@ -31,17 +31,19 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <span class="navbar-brand">Compartmentalize</span>
+                <div class="btn-group pull-right" role="group" aria-label="...">
 
-                <div id="dropdownButton" class="btn-group pull-right" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        Toggle Modules<span class="caret"></span>
-                    </button>
-                    <ul id="selectionDropdown" class="dropdown-menu" role="menu">
-                    </ul>
+                    <button id="genButton" type="button" class="btn btn-primary compartButton" onclick="javascript:generateModules();">Generate Modules</button>
+                    <button id="toggleOnButton" type="button" class="btn btn-primary compartButton" onclick="javascript:toggleModules(true);">Toggle On All Modules</button>
+                    <button id="toggleOffButton" type="button" class="btn btn-primary compartButton" onclick="javascript:toggleModules(false);">Toggle Off All Modules</button>
+                    <div id="dropdownButton" class="btn-group" role="group">
+                        <button type="button" class="btn  btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Toggle Modules<span class="caret"></span>
+                        </button>
+                        <ul id="selectionDropdown" class="dropdown-menu" role="menu">
+                        </ul>
+                    </div>
                 </div>
-
-                <button id="genButton" type="button" class="btn btn-primary pull-right" onclick="javascript:generateModules();">Generate Modules</button>
-
             </div>
         </div>
     </div>

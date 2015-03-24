@@ -10,7 +10,7 @@ function generateYoutubeModule() {
     returnString += "</div>";
     returnString += "<div id='youtubePlayerInput' style='height:126px;'>";
     returnString += "<div class='input-group'>";
-    returnString += "<span class='input-group-addon' id='youtube-sizing-addon'>Video Id:</span>";
+    returnString += "<span class='input-group-addon' id='youtube-sizing-addon'>Video Id or URL:</span>";
     returnString += "<input type='text' class='form-control' placeholder='Id' aria-describedby='youtube-sizing-addon' id='youtubeInputId'>";
     returnString += "</div><br />";
     returnString += "<div class='btn-group' role='group' aria-label='...'>";
@@ -27,6 +27,16 @@ function generateYoutubeModule() {
 
 function addVideo() {
     var vidToAdd = $("#youtubeInputId").val();
+    // Assume it needs to be formatted.
+    if (vidToAdd.length > 11) {
+        var vParamIndex = vidToAdd.indexOf("?v=");
+        if (vParamIndex > -1) {
+            // Offset for "?v=".
+            var vParamIndexWithOffset = vParamIndex + 3;
+            // Plus 11 for the id length.
+            vidToAdd = vidToAdd.slice(vParamIndexWithOffset, vParamIndexWithOffset + 11);
+        }
+    }
     if (/^[a-z0-9_-]{11}$/i.test(vidToAdd)) {
         videoArray.push(vidToAdd);
         $("#youtubeStatus").text(vidToAdd + " added!");

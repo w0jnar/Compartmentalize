@@ -60,6 +60,18 @@ function checkCheckBox(idName) {
     }
 }
 
+function toggleModules(isOnButton) {
+    for (var i = 0; i < supportedModules.length; i++) {
+        // If it is check and we are from the toggle off button, toggle it off.
+        if ($("#" + supportedModules[i].id).is(':checked') && !isOnButton) {
+            $("#" + supportedModules[i].id).prop('checked', false);
+        } else if (!$("#" + supportedModules[i].id).is(':checked') && isOnButton) {
+            // If it is not check and we are from the toggle on button, toggle it on.
+            $("#" + supportedModules[i].id).prop('checked', true);
+        }
+    }
+}
+
 // Generates the Modules strings, for each selected item.
 function generateModules() {
     reset();
