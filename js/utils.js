@@ -45,7 +45,7 @@ function reset() {
 function generateList() {
     pageResize();
     var listElementString = "";
-    for (var i = 0; i < supportedModules.length; i++) {
+    for (var i = 0, ii = supportedModules.length; i < ii; i++) {
         listElementString += "<li><a href=\"javascript:void(0);\"  onclick=\"javascript:checkCheckBox('" + supportedModules[i].id + "');\"><input type=\"checkbox\" id=\"" + supportedModules[i].id + "\"/>&nbsp;" + supportedModules[i].name + "</a></li>";
     }
     if (listElementString.length > 0) {
@@ -64,7 +64,7 @@ function checkCheckBox(idName) {
 }
 
 function toggleModules(isOnButton) {
-    for (var i = 0; i < supportedModules.length; i++) {
+    for (var i = 0, ii = supportedModules.length; i < ii; i++) {
         // If it is check and we are from the toggle off button, toggle it off.
         if ($("#" + supportedModules[i].id).is(':checked') && !isOnButton) {
             $("#" + supportedModules[i].id).prop('checked', false);
@@ -80,7 +80,7 @@ function generateModules() {
     reset();
     $("#rowContent").empty();
     var domElementString = "";
-    for (var i = 0; i < supportedModules.length; i++) {
+    for (var i = 0, ii = supportedModules.length; i < ii; i++) {
         if ($("#" + supportedModules[i].id).is(':checked')) {
             domElementString += generateModuleString(supportedModules[i]);
         }

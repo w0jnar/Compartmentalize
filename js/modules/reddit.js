@@ -67,7 +67,7 @@ function buildChart(jsonArray) {
     $("#redditLogging").height(219);
     $("#redditLogging").css("overflow-y", "scroll");
     var htmlString = "<table class='table table-striped'>";
-    for (var i = 0; i < jsonArray.length; i++) {
+    for (var i = 0, ii = jsonArray.length; i < ii; i++) {
         htmlString += "<tr>";
         htmlString += "<td>" + jsonArray[i].data.subreddit + "</td>";
         htmlString += "<td>" + "<a href='" + jsonArray[i].data.url + "'>" + jsonArray[i].data.title + "</a></td>";

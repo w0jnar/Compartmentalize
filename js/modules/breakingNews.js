@@ -64,7 +64,7 @@ function buildbreakingNewsList(jsonArray) {
     $("#breakingNewsLogging").height(216);
     $("#breakingNewsLogging").css("overflow-y", "scroll");
     var htmlString = "<table class='table table-striped'>";
-    for (var i = 0; i < jsonArray.length; i++) {
+    for (var i = 0, ii = jsonArray.length; i < ii; i++) {
         htmlString += "<tr>";
         htmlString += "<td>" + "<a href='" + jsonArray[i].link + "'>" + jsonArray[i].title + "</a></td>";
         htmlString += "</tr>";
