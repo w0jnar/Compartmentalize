@@ -113,7 +113,10 @@ function nextVideo(event) {
             currentVideo = 0;
         }
         if (videoArray.length !== 0) {
-            player.cueVideoById(videoArray[currentVideo], 0);
+            player.cueVideoById({
+                videoId:videoArray[currentVideo],
+                startSeconds:0
+                });
             event.target.playVideo();
         }
     }
