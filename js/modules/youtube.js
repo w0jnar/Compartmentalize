@@ -73,7 +73,9 @@ function startVideos() {
             height: '251',
             width: ($("#youtubeIdModule .panel").innerWidth() - 30),
             videoId: videoArray[0],
-            start: 0,
+            playerVars: {
+                start: 0
+            },
             events: {
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange,
@@ -116,7 +118,7 @@ function nextVideo(event) {
         if (videoArray.length !== 0) {
             player.cueVideoById({
                 videoId:videoArray[currentVideo],
-                startSeconds:0
+                startSeconds: 0
                 });
             event.target.playVideo();
         }
