@@ -23,6 +23,7 @@ function generateBreakingNewsModule() {
 function getBreakingNews() {
     var input = $("#breakingNewsInputId").val();
     var numToSend;
+    // If no input, use 5 as the input, otherwise, check if the input is a digit.
     if (/^\d+$/.test(input)) {
         numToSend = input;
     } else if (input === "") {
@@ -30,6 +31,7 @@ function getBreakingNews() {
     } else {
         $("#breakingNewsLogging").text("-ERROR: Please enter a valid number of articles.\n");
     }
+    // If it was valid, start an interval to automatically get articles.
     if (typeof numToSend !== "undefined") {
         if (timerHolder !== null) {
             clearInterval(timerHolder);
@@ -67,7 +69,7 @@ function buildbreakingNewsList(jsonArray) {
     var htmlString = "<table class='table table-striped'>";
     for (var i = 0, ii = jsonArray.length; i < ii; i++) {
         htmlString += "<tr>";
-        htmlString += "<td>" + "<a href='" + jsonArray[i].link + "'>" + jsonArray[i].title + "</a></td>";
+        htmlString +=     "<td>" + "<a href='" + jsonArray[i].link + "'>" + jsonArray[i].title + "</a></td>";
         htmlString += "</tr>";
     }
     htmlString += "</table>";

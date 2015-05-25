@@ -88,6 +88,10 @@ function generateModules() {
     if (domElementString.length > 0) {
         $("#rowContent").append(domElementString);
         resetShapeShift();
+        // Clean up child elements' z-indices so they do not create issues with ShapeShift.
+        for (var i = 0, ii = supportedModules.length; i < ii; i++) {
+            $("#" + supportedModules[i].id + "Module").find('*').css("z-index", "inherit");
+        }
     }
 };
 
