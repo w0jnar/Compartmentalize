@@ -94,24 +94,22 @@ function generateModules() {
 // Generates the individual Module Strings, with the basic template, 
 // then calling the specific function to generate the chosen module.
 function generateModuleString(specificObjectToGenerate) {
-    var returnString = "<div id='" + specificObjectToGenerate.id + "Module' class='contentChild'>";
-    // var functionReturn = specificObjectToGenerate.functionPointer();
-    returnString += "<div class='well well-sm'>";
-
-    returnString += "<div class='panel panel-primary'>";
-    returnString += "<div class='panel-heading'>";
-    returnString += "<h3 class='panel-title'>";
-    returnString += specificObjectToGenerate.name;
-    returnString += "</h3>";
-    returnString += "</div>";
-    returnString += "<div class='panel-body'>";
-    returnString += specificObjectToGenerate.functionPointer();
-    returnString += "</div>";
-    returnString += "</div>";
-
-    returnString += "</div>";
-    returnString += "</div>";
-    return returnString;
+    var domString = "";
+    domString += "<div id='" + specificObjectToGenerate.id + "Module' class='contentChild'>";
+    domString +=    "<div class='well well-sm'>";
+    domString +=        "<div class='panel panel-primary'>";
+    domString +=            "<div class='panel-heading'>";
+    domString +=                "<h3 class='panel-title'>";
+    domString +=                    specificObjectToGenerate.name;
+    domString +=                "</h3>";
+    domString +=            "</div>";
+    domString +=            "<div class='panel-body'>";
+    domString +=                specificObjectToGenerate.functionPointer();
+    domString +=            "</div>";
+    domString +=        "</div>";
+    domString +=    "</div>";
+    domString += "</div>";
+    return domString;
 }
 
 function resetShapeShift() {

@@ -2,20 +2,21 @@
 
 // The basic Breaking News Module.
 function generateBreakingNewsModule() {
-    var returnString = "";
-    returnString += "<div id='breakingNewsContainer'>";
-    returnString += "<div id='breakingNewsLogging'>";
-    returnString += "</div>";
-    returnString += "<div id='breakingNewsInfo' style='height:126px'>";
-    returnString += "<div class='input-group'>";
-    returnString += "<span class='input-group-addon' id='breakingNews-sizing-addon'>Time between Polls:</span>";
-    returnString += "<input type='text' class='form-control' placeholder='5' aria-describedby='breakingNews-sizing-addon' id='breakingNewsInputId'>";
-    returnString += "<span class='input-group-addon'>Minute(s)</span>";
-    returnString += "</div><br />";
-    returnString += "<button id='breakingNewsButton' type='button' class='btn btn-primary' onclick='javascript:getBreakingNews();'>Get Breaking News Posts</button>";
-    returnString += "</div>";
-    returnString += "</div>";
-    return returnString;
+    var domString = "";
+    domString += "<div id='breakingNewsContainer'>";
+    domString +=     "<div id='breakingNewsLogging'>";
+    domString +=     "</div>";
+    domString +=     "<div id='breakingNewsInfo' style='height:126px'>";
+    domString +=         "<div class='input-group'>";
+    domString +=             "<span class='input-group-addon' id='breakingNews-sizing-addon'>Time between Polls:</span>";
+    domString +=             "<input type='text' class='form-control' placeholder='5' aria-describedby='breakingNews-sizing-addon' id='breakingNewsInputId'>";
+    domString +=             "<span class='input-group-addon'>Minute(s)</span>";
+    domString +=         "</div>";
+    domString +=         "<br />";
+    domString +=         "<button id='breakingNewsButton' type='button' class='btn btn-primary' onclick='javascript:getBreakingNews();'>Get Breaking News Posts</button>";
+    domString +=     "</div>";
+    domString += "</div>";
+    return domString;
 }
 
 // On button press, attempt to get News, and start an interval.
@@ -41,8 +42,8 @@ function getBreakingNews() {
 function getArticles() {
     var newsUrl = 'http://api.breakingnews.com/api/v1/item/?format=rss';
     // http://stackoverflow.com/questions/11346990/reading-rss-feed-with-jquery
-    // Breaking News' JSON Api does not have a CORS header, so have to make due with
-    // what we can.
+    // Breaking News' JSON Api does not have a CORS header, so we have to make 
+    // due with what we can.
     $.ajax({
         type: "GET",
         url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(newsUrl),

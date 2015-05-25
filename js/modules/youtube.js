@@ -4,25 +4,26 @@ var player;
 
 // The basic Youtube Module.
 function generateYoutubeModule() {
-    var returnString = "";
-    returnString += "<div>";
-    returnString += "<div id='youtubePlayer'>";
-    returnString += "</div>";
-    returnString += "<div id='youtubePlayerInput' style='height:126px;'>";
-    returnString += "<div class='input-group'>";
-    returnString += "<span class='input-group-addon' id='youtube-sizing-addon'>Video Id or URL:</span>";
-    returnString += "<input type='text' class='form-control' placeholder='Id' aria-describedby='youtube-sizing-addon' id='youtubeInputId'>";
-    returnString += "</div><br />";
-    returnString += "<div class='btn-group' role='group' aria-label='...'>";
-    returnString += "<button id='youtubeAddButton' type='button' class='btn btn-primary' onclick='javascript:videoHelper(true);'>Add Video</button>";
-    returnString += "<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:videoHelper(false);'>Remove Video</button>";
-    returnString += "<button id='youtubeStartButton' type='button' class='btn btn-primary' onclick='javascript:startVideos();'>Start Playlist</button>";
-    returnString += "</div>";
-    returnString += "<div id='youtubeStatus' style='height:30px;'>";
-    returnString += "</div>";
-    returnString += "</div>";
-    returnString += "</div>";
-    return returnString;
+    var domString = "";
+    domString += "<div>";
+    domString +=    "<div id='youtubePlayer'>";
+    domString +=    "</div>";
+    domString +=    "<div id='youtubePlayerInput' style='height:126px;'>";
+    domString +=        "<div class='input-group'>";
+    domString +=            "<span class='input-group-addon' id='youtube-sizing-addon'>Video Id or URL:</span>";
+    domString +=            "<input type='text' class='form-control' placeholder='Id' aria-describedby='youtube-sizing-addon' id='youtubeInputId'>";
+    domString +=        "</div>";
+    domString +=        "<br />";
+    domString +=        "<div class='btn-group' role='group' aria-label='...'>";
+    domString +=            "<button id='youtubeAddButton' type='button' class='btn btn-primary' onclick='javascript:videoHelper(true);'>Add Video</button>";
+    domString +=            "<button id='youtubeRemoveButton' type='button' class='btn btn-primary' onclick='javascript:videoHelper(false);'>Remove Video</button>";
+    domString +=            "<button id='youtubeStartButton' type='button' class='btn btn-primary' onclick='javascript:startVideos();'>Start Playlist</button>";
+    domString +=        "</div>";
+    domString +=        "<div id='youtubeStatus' style='height:30px;'>";
+    domString +=        "</div>";
+    domString +=    "</div>";
+    domString += "</div>";
+    return domString;
 };
 
 function videoHelper(isAdding) {

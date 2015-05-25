@@ -2,23 +2,24 @@
 
 // The basic Slack Module.
 function generateSlackModule() {
-    var returnString = "";
-    returnString += "<div>";
-    returnString += "<div id='slackKeyInput' style='height: 126px;'>";
-    returnString += "<div class='input-group'>";
-    returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Slack URL Or Group:&nbsp;</span>";
-    returnString += "<input type='text' class='form-control' placeholder='URL' aria-describedby='slack-sizing-addon1' id='slackURL'>";
-    returnString += "</div>";
-    returnString += "<div class='input-group'>";
-    returnString += "<span class='input-group-addon' id='slack-sizing-addon1'>Bot Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
-    returnString += "<input type='text' class='form-control' placeholder='Key' aria-describedby='slack-sizing-addon1' id='slackKey'>";
-    returnString += "</div><br />";
-    returnString += "<button id='slackKeyButton' type='button' class='btn btn-primary' onclick='javascript:startConnection();'>Initialize Connection</button>";
-    returnString += "</div>";
-    returnString += "<div id='slackTAContainer' style='display:none; height:382px;'>";
-    returnString += "</div>";
-    returnString += "</div>";
-    return returnString;
+    var domString = "";
+    domString += "<div>";
+    domString +=    "<div id='slackKeyInput' style='height: 126px;'>";
+    domString +=        "<div class='input-group'>";
+    domString +=            "<span class='input-group-addon' id='slack-sizing-addon1'>Slack URL Or Group:&nbsp;</span>";
+    domString +=            "<input type='text' class='form-control' placeholder='URL' aria-describedby='slack-sizing-addon1' id='slackURL'>";
+    domString +=        "</div>";
+    domString +=        "<div class='input-group'>";
+    domString +=            "<span class='input-group-addon' id='slack-sizing-addon1'>Bot Key:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+    domString +=            "<input type='text' class='form-control' placeholder='Key' aria-describedby='slack-sizing-addon1' id='slackKey'>";
+    domString +=        "</div>";
+    domString +=        "<br />";
+    domString +=        "<button id='slackKeyButton' type='button' class='btn btn-primary' onclick='javascript:startConnection();'>Initialize Connection</button>";
+    domString +=    "</div>";
+    domString +=    "<div id='slackTAContainer' style='display:none; height:382px;'>";
+    domString +=    "</div>";
+    domString += "</div>";
+    return domString;
 };
 
 // The actual connection attempt.
