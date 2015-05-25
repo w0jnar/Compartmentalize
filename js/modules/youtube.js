@@ -73,6 +73,7 @@ function startVideos() {
             height: '251',
             width: ($("#youtubeIdModule .panel").innerWidth() - 30),
             videoId: videoArray[0],
+            start: 0,
             events: {
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange,
